@@ -1,0 +1,22 @@
+{
+  "name": "swiper-extra-modules",
+  "version": "0.1.0",
+  "description": "some additional modules for swiperjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/9romise/swiper-extra-modules.git"
+  },
+  "keywords": [
+    "swiper",
+    "module"
+  ],
+  "author": "Vida Xie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/9romise/swiper-extra-modules/issues"
+  },
+  "homepage": "https://github.com/9romise/swiper-extra-modules#readme",
+  "devDependencies": {
+    "typescript": "^5.4.2"
+  }
+}

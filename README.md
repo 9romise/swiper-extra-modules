@@ -1,2 +1,8 @@
 # swiper-extra-modules
-some additional modules for swiperjs
+Some additional modules for [swiperjs](https://swiperjs.com)
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
+
+Copyright (c) 2024-present, Binhui (Vida) Xie
