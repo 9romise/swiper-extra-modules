@@ -1,22 +1,51 @@
 {
   "name": "swiper-extra-modules",
   "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@8.15.4",
   "description": "some additional modules for swiperjs",
+  "author": "Vida Xie<https://github.com/9romise>",
+  "homepage": "https://github.com/9romise/swiper-extra-modules#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/9romise/swiper-extra-modules.git"
+  },
+  "scripts": {
+    "build": "rollup --config=rollup.config.ts --configPlugin=rollup-plugin-esbuild",
+    "typecheck": "tsc --noEmit",
+    "playground": "cd playground && vite"
   },
   "keywords": [
     "swiper",
     "module"
   ],
-  "author": "Vida Xie",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/9romise/swiper-extra-modules/issues"
   },
-  "homepage": "https://github.com/9romise/swiper-extra-modules#readme",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.cjs"
+    }
+  },
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "unpkg": "./index.iife.min.js",
+  "jsdelivr": "./index.iife.min.js",
   "devDependencies": {
-    "typescript": "^5.4.2"
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@types/node": "^20.11.30",
+    "rollup": "^4.13.2",
+    "rollup-plugin-esbuild": "^6.1.1",
+    "swiper": "^11.1.0",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.7"
+  },
+  "dependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "lodash-es": "^4.17.21"
   }
 }
