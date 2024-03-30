@@ -23,4 +23,4 @@ export type SwiperModule = (options: {
 
 export interface SwiperEvents extends OriSwiperEvents, ScrollFixEvents {};
 
-export * from './scroll-fix.d.ts';
+export * from './scroll-fix';

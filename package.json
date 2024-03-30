@@ -12,9 +12,8 @@
   },
   "scripts": {
     "rollup": "rollup --config=rollup.config.ts --configPlugin=rollup-plugin-esbuild",
-    "build": "esno scripts/build-run.ts",
-    "watch": "esno scripts/build-run.ts --watch",
-    "types:fix": "esno scripts/fix-types.ts",
+    "build": "esno scripts/build.ts",
+    "watch": "esno scripts/build.ts --watch",
     "typecheck": "tsc --noEmit",
     "release": "bumpp",
     "playground": "cd playground && vite"
@@ -33,6 +32,7 @@
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
+      "types": "./dist/types/index.d.ts",
       "require": "./dist/index.cjs"
     }
   },
@@ -51,6 +51,7 @@
     "esno": "^4.7.0",
     "rimraf": "^5.0.5",
     "rollup": "^4.13.2",
+    "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-esbuild": "^6.1.1",
     "typescript": "^5.4.3",
     "vite": "^5.2.7"

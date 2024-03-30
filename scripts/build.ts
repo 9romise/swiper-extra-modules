@@ -9,9 +9,6 @@ async function build() {
 
   consola.info('Rollup');
   exec(`npm run rollup ${watch ? '-- --watch' : ''}`, { stdio: 'inherit' });
-
-  consola.info('Fix types');
-  exec(`npm run types:fix`, { stdio: 'inherit' });
 }
 
-export { build };
+build();
