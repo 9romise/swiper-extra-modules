@@ -1,13 +1,13 @@
-import type { Swiper as OriginalSwiper, SwiperOptions as OriginalSwiperOptions, SwiperEvents as OriginalSwiperEvents } from 'swiper/types';
+import type { Swiper as OriSwiper, SwiperOptions as OriSwiperOptions, SwiperEvents as OriSwiperEvents } from 'swiper/types';
 import { ScrollFixEvents, ScrollFixMethods, ScrollFixOptions } from './scroll-fix';
 
-export type Swiper = OriginalSwiper & {
+export type Swiper = OriSwiper & {
   params: SwiperOptions;
   originalParams: SwiperOptions;
   scrollFix: ScrollFixMethods;
 };
 
-export type SwiperOptions = OriginalSwiperOptions & {
+export type SwiperOptions = OriSwiperOptions & {
   scrollFix?: ScrollFixOptions;
 }
 
@@ -21,6 +21,6 @@ export type SwiperModule = (options: {
   emit: Swiper['emit'];
 }) => void;
 
-export interface SwiperEvents extends OriginalSwiperEvents, ScrollFixEvents {};
+export interface SwiperEvents extends OriSwiperEvents, ScrollFixEvents {};
 
 export * from './scroll-fix.d.ts';

@@ -1,6 +1,3 @@
-import type Swiper from 'swiper';
-import { SwiperOptions } from '.';
-
 export interface ScrollFixMethods {
   /**
    * Update scroll elements and eventListeners.
@@ -21,5 +18,4 @@ export interface ScrollFixEvents {}
  * });
  * ```
  */
-export interface ScrollFixOptions {
-}
+export interface ScrollFixOptions {}
