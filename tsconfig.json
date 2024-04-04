@@ -15,11 +15,5 @@
     "noUnusedLocals": true,
     "skipLibCheck": true
   },
-  "include": [
-    "*.ts",
-    "src/**/*",
-    "src/shared/**/*",
-    "src/types/**/*",
-    "playground/vite.config.ts"
-  ]
+  "include": ["scripts/**/*", "src/**/*", "playground/vite.config.ts"]
 }

@@ -12,8 +12,8 @@
   },
   "scripts": {
     "rollup": "rollup --config=rollup.config.ts --configPlugin=rollup-plugin-esbuild",
-    "build": "esno scripts/build.ts",
-    "watch": "esno scripts/build.ts --watch",
+    "build": "tsx scripts/build.ts",
+    "watch": "tsx scripts/build.ts --watch",
     "typecheck": "tsc --noEmit",
     "release": "bumpp",
     "playground": "cd playground && vite"
@@ -26,6 +26,7 @@
   "bugs": {
     "url": "https://github.com/9romise/swiper-extra-modules/issues"
   },
+  "sideEffects": false,
   "files": [
     "dist"
   ],
@@ -45,17 +46,18 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/lodash-es": "^4.17.12",
-    "@types/node": "^20.12.2",
+    "@types/node": "^20.12.3",
     "bumpp": "^9.4.0",
     "changelogithub": "^0.13.5",
     "consola": "^3.2.3",
-    "esno": "^4.7.0",
+    "eslint": "^8.57.0",
     "rimraf": "^5.0.5",
-    "rollup": "^4.13.2",
+    "rollup": "^4.14.0",
     "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-esbuild": "^6.1.1",
+    "tsx": "^4.7.1",
     "typescript": "^5.4.3",
-    "vite": "^5.2.7"
+    "vite": "^5.2.8"
   },
   "dependencies": {
     "lodash-es": "^4.17.21",
