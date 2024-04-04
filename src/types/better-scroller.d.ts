@@ -1,6 +1,6 @@
 export interface BetterScrollerMethods {
   /**
-   * Update scroll elements and eventListeners.
+   * Update scrollable elements and their eventListeners.
    */
   update(): void;
 }
@@ -18,4 +18,15 @@ export interface BetterScrollerEvents {}
  * });
  * ```
  */
-export interface BetterScrollerOptions {}
+export interface BetterScrollerOptions {
+  /**
+   * Defines how scrolling should behavior after a slide transition.
+  *
+   * Set to `false` to skip.
+   *
+   * It could be a function that determines scrolling options for each scrollable element.
+   *
+   * @default true
+   */
+  resetScroll?: boolean | ScrollToOptions | ((scrollableElement: Element) => boolean | ScrollToOptions);
+}

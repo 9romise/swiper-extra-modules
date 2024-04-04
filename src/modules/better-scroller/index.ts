@@ -1,10 +1,12 @@
-import { throttle } from 'lodash-es';
+import { isBoolean, isFunction, throttle } from 'lodash-es';
 import { getScrollParent, isScrollable, loopChildren } from '../../shared/utils';
 import { SwiperModule } from '../../types';
 
 export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
   extendParams({
-    betterScroller: {},
+    betterScroller: {
+      resetScroll: true,
+    },
   });
 
   let noSwipingClass = '';
@@ -30,9 +32,30 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
       scrollStart: 'scrollTop',
       scroll: 'scrollHeight',
       client: 'clientHeight',
-    }
+    },
   } as const;
   let measure: (typeof MEASURE_PRESET)['horizontal' | 'vertical'];
+
+  on('slideChangeTransitionEnd', () => {
+    const { resetScroll } = swiper.params.betterScroller!;
+
+    if (resetScroll === false) return;
+
+    scrollableElements.forEach((el) => {
+      let options: ScrollToOptions = { left: 0, top: 0 };
+
+      if (isFunction(resetScroll)) {
+        let res = resetScroll(el) ?? true;
+
+        if (res === false) return;
+        else if (!isBoolean(res)) options = res;
+      } else if (!isBoolean(resetScroll)) {
+        options = resetScroll!;
+      }
+
+      el.scrollTo(options);
+    });
+  });
 
   const onWheel = (e: WheelEvent) => {
     // prettier-ignore
@@ -134,7 +157,7 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
   };
 
   on('init', (swiper) => {
-    swiper.el.classList.add(`${swiper.params.containerModifierClass}scroll-fix`);
+    swiper.el.classList.add(`${swiper.params.containerModifierClass}better-scroller`);
     update();
     attachEvents();
   });
@@ -146,7 +169,7 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
   });
 
   on('destroy', (swiper) => {
-    swiper.el.classList.remove(`${swiper.params.containerModifierClass}scroll-fix`);
+    swiper.el.classList.remove(`${swiper.params.containerModifierClass}better-scroller`);
     detachEvents();
   });
 
