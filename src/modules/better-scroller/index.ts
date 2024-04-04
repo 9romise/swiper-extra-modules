@@ -2,9 +2,9 @@ import { throttle } from 'lodash-es';
 import { getScrollParent, isScrollable, loopChildren } from '../../shared/utils';
 import { SwiperModule } from '../../types';
 
-export const ScrollFix: SwiperModule = ({ swiper, extendParams, on }) => {
+export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
   extendParams({
-    scrollFix: {},
+    betterScroller: {},
   });
 
   let noSwipingClass = '';
@@ -180,7 +180,7 @@ export const ScrollFix: SwiperModule = ({ swiper, extendParams, on }) => {
     });
   };
 
-  swiper.scrollFix = {
+  swiper.betterScroller = {
     update,
   };
 };

@@ -109,11 +109,11 @@
     <script type="module">
       import 'swiper/css';
       import Swiper from 'swiper';
-      import { ScrollFix } from 'swiper-extra-modules';
+      import { BetterScroller } from 'swiper-extra-modules';
 
       var swiper = new Swiper('.mySwiper', {
         direction: 'vertical',
-        modules: [ScrollFix],
+        modules: [BetterScroller],
       });
     </script>
 
@@ -139,14 +139,10 @@
       }
 
       .swiper-slide {
-        display: flex;
         height: 100%;
         text-align: center;
         font-size: 18px;
         overflow: auto;
-      }
-      p {
-        flex-shrink: 0;
       }
     </style>
   </body>

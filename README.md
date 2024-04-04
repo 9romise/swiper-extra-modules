@@ -17,7 +17,7 @@ npm i swiper-extra-modules
 
 ## Modules
 
-### ScrollFix
+### BetterScroller
 
 When there is a scroll area in your swiper slide with the same scroll direction as the swiper's direction, the scrolling will not work properly. This module appears to fix it.
 

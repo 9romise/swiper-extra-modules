@@ -1,15 +1,15 @@
 import type { Swiper as OriSwiper, SwiperOptions as OriSwiperOptions, SwiperEvents as OriSwiperEvents } from 'swiper/types';
-import { ScrollFixEvents, ScrollFixMethods, ScrollFixOptions } from './scroll-fix';
+import { BetterScrollerEvents, BetterScrollerMethods, BetterScrollerOptions } from './better-scroller';
 
 export type Swiper = OriSwiper & {
   params: SwiperOptions;
   originalParams: SwiperOptions;
-  scrollFix: ScrollFixMethods;
+  betterScroller: BetterScrollerMethods;
 };
 
 export type SwiperOptions = OriSwiperOptions & {
-  scrollFix?: ScrollFixOptions;
-}
+  betterScroller?: BetterScrollerOptions;
+};
 
 export type SwiperModule = (options: {
   params: SwiperOptions;
@@ -21,6 +21,6 @@ export type SwiperModule = (options: {
   emit: Swiper['emit'];
 }) => void;
 
-export interface SwiperEvents extends OriSwiperEvents, ScrollFixEvents {};
+export interface SwiperEvents extends OriSwiperEvents, BetterScrollerEvents {};
 
-export * from './scroll-fix';
+export * from './better-scroller';
