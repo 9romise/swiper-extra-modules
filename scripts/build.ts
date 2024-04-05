@@ -1,4 +1,5 @@
 import { execSync as exec } from 'node:child_process';
+import process from 'node:process';
 import consola from 'consola';
 
 const watch = process.argv.includes('--watch');

@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite';
 import path from 'node:path';
+import { defineConfig } from 'vite';
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
   resolve: {
     alias: {
       'swiper-extra-modules': path.resolve('../dist/'),

@@ -2,7 +2,7 @@ export interface BetterScrollerMethods {
   /**
    * Update scrollable elements and their eventListeners.
    */
-  update(): void;
+  update: () => void;
 }
 
 export interface BetterScrollerEvents {}
@@ -21,7 +21,7 @@ export interface BetterScrollerEvents {}
 export interface BetterScrollerOptions {
   /**
    * Defines how scrolling should behavior after a slide transition.
-  *
+   *
    * Set to `false` to skip.
    *
    * It could be a function that determines scrolling options for each scrollable element.
