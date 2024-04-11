@@ -1,5 +1,5 @@
-import { isBoolean, isFunction, throttle } from 'lodash-es';
-import { getScrollParent, isScrollable, loopChildren } from '../../shared/utils';
+import { throttle } from 'lodash-es';
+import { getScrollParent, isBoolean, isFunction, isScrollable, loopChildren } from '../../shared/utils';
 import type { SwiperModule } from '../../types';
 
 export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
