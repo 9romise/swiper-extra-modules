@@ -27,7 +27,7 @@ devDependencies:
     version: 20.12.7
   '@vida0905/eslint-config':
     specifier: ^0.1.2
-    version: 0.1.2(@vue/compiler-sfc@3.4.21)(eslint-plugin-format@0.1.0)(eslint@8.57.0)(typescript@5.4.5)
+    version: 0.1.2(@vue/compiler-sfc@3.4.21)(eslint-plugin-format@0.1.1)(eslint@8.57.0)(typescript@5.4.5)
   bumpp:
     specifier: ^9.4.0
     version: 9.4.0
@@ -42,7 +42,7 @@ devDependencies:
     version: 8.57.0
   eslint-plugin-format:
     specifier: ^0.1.0
-    version: 0.1.0(eslint@8.57.0)
+    version: 0.1.1(eslint@8.57.0)
   pre-commit:
     specifier: ^1.2.2
     version: 1.2.2
@@ -75,7 +75,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /@antfu/eslint-config@2.13.3(@vue/compiler-sfc@3.4.21)(eslint-plugin-format@0.1.0)(eslint@8.57.0)(typescript@5.4.5):
+  /@antfu/eslint-config@2.13.3(@vue/compiler-sfc@3.4.21)(eslint-plugin-format@0.1.1)(eslint@8.57.0)(typescript@5.4.5):
     resolution: {integrity: sha512-DCyrnFgWtIc0mUTn8HeVB15Z/t9oEQZk8ce6S14Kq6z42LbMfZxPu6hs4SmPFYWLJoEzYq87dxsRv3glOX+aGw==}
     hasBin: true
     peerDependencies:
@@ -129,7 +129,7 @@ packages:
       eslint-merge-processors: 0.1.0(eslint@8.57.0)
       eslint-plugin-antfu: 2.1.2(eslint@8.57.0)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.57.0)
-      eslint-plugin-format: 0.1.0(eslint@8.57.0)
+      eslint-plugin-format: 0.1.1(eslint@8.57.0)
       eslint-plugin-import-x: 0.5.0(eslint@8.57.0)(typescript@5.4.5)
       eslint-plugin-jsdoc: 48.2.3(eslint@8.57.0)
       eslint-plugin-jsonc: 2.15.0(eslint@8.57.0)
@@ -244,8 +244,8 @@ packages:
     resolution: {integrity: sha512-WjsC4yLybR5/76+d/2s36nOBGjETe+jJR//ddFHohDXKdis+FTUv7dJ00kmd6g0AKQwDITayM1Nid10gFNG0Yg==}
     dev: true
 
-  /@dprint/toml@0.5.4:
-    resolution: {integrity: sha512-d+5GwwzztZD0QixmOBhaO6nWVLsAeYsJ1HJYNxDoDRbASFCpza9BBVshG5ctBRXCkkIHhD9BO1SnbOoRQltUQw==}
+  /@dprint/toml@0.6.1:
+    resolution: {integrity: sha512-1fmGui+BNLKNonG3fvjT+thtL8u0pL1GsIuRbhgRnP+UOkcfPgoUsgNFctDmOE13y6MX4TVvxXKKrMY/qwXqkA==}
     dev: true
 
   /@es-joy/jsdoccomment@0.42.0:
@@ -1288,12 +1288,12 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@vida0905/eslint-config@0.1.2(@vue/compiler-sfc@3.4.21)(eslint-plugin-format@0.1.0)(eslint@8.57.0)(typescript@5.4.5):
+  /@vida0905/eslint-config@0.1.2(@vue/compiler-sfc@3.4.21)(eslint-plugin-format@0.1.1)(eslint@8.57.0)(typescript@5.4.5):
     resolution: {integrity: sha512-dbE6fQYKXGjZEjfmwVJm4luh3OIJeiscvKjD6hqBV/ISVZ/53Vfq7yBmL90gJ5bFhj8vp+lVBwB6Iz8q6kflwA==}
     peerDependencies:
       eslint: '>=8.0.0'
     dependencies:
-      '@antfu/eslint-config': 2.13.3(@vue/compiler-sfc@3.4.21)(eslint-plugin-format@0.1.0)(eslint@8.57.0)(typescript@5.4.5)
+      '@antfu/eslint-config': 2.13.3(@vue/compiler-sfc@3.4.21)(eslint-plugin-format@0.1.1)(eslint@8.57.0)(typescript@5.4.5)
       eslint: 8.57.0
       eslint-plugin-pinia: 0.1.12(eslint@8.57.0)(typescript@5.4.5)
       local-pkg: 0.5.0
@@ -2051,19 +2051,19 @@ packages:
       ignore: 5.3.1
     dev: true
 
-  /eslint-plugin-format@0.1.0(eslint@8.57.0):
-    resolution: {integrity: sha512-IgOu+GEH+PdKnpuPrFzY8q8QgnzAUijDZsNLhpp5jx0Lbu9u968/STcmEZGnIMVBw3zeTNN/FsU6d2Rdgcy6Aw==}
+  /eslint-plugin-format@0.1.1(eslint@8.57.0):
+    resolution: {integrity: sha512-jzk70D3RbaseNIdMtimMqiJHDPUw9bzZjmZTT9tQ6x3HU9U9bGqnsieQK5H0FIZUpx4qC41CidLDWwVCylICRQ==}
     peerDependencies:
-      eslint: ^8.40.0
+      eslint: ^8.40.0 || ^9.0.0
     dependencies:
       '@dprint/formatter': 0.2.1
       '@dprint/markdown': 0.16.4
-      '@dprint/toml': 0.5.4
+      '@dprint/toml': 0.6.1
       eslint: 8.57.0
       eslint-formatting-reporter: 0.0.0(eslint@8.57.0)
       eslint-parser-plain: 0.1.0
       prettier: 3.2.5
-      synckit: 0.8.8
+      synckit: 0.9.0
     dev: true
 
   /eslint-plugin-import-x@0.5.0(eslint@8.57.0)(typescript@5.4.5):
@@ -3934,8 +3934,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /synckit@0.8.8:
-    resolution: {integrity: sha512-HwOKAP7Wc5aRGYdKH+dw0PRRpbO841v2DENBtjnR5HFWoiNByAl7vrx3p0G/rCyYXQsrxqtX48TImFtPcIHSpQ==}
+  /synckit@0.9.0:
+    resolution: {integrity: sha512-7RnqIMq572L8PeEzKeBINYEJDDxpcH8JEgLwUqBd3TkofhFRbkq4QLR0u+36avGAhCRbk2nnmjcW9SE531hPDg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     dependencies:
       '@pkgr/core': 0.1.1
