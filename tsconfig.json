@@ -15,5 +15,6 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": ["scripts/**/*", "src/**/*", "playground/vite.config.ts"]
+  "include": ["**/*.ts"],
+  "exclude": ["dist"]
 }
