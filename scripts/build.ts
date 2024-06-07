@@ -9,7 +9,7 @@ async function build() {
   exec('rimraf dist');
 
   consola.info('Rollup');
-  exec(`npm run rollup ${watch ? '-- --watch' : ''}`, { stdio: 'inherit' });
+  exec(`rollup --config=rollup.config.ts --configPlugin=rollup-plugin-esbuild ${watch ? '--watch' : ''}`, { stdio: 'inherit' });
 }
 
 build();

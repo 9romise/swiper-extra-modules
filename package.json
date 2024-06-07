@@ -2,7 +2,7 @@
   "name": "swiper-extra-modules",
   "type": "module",
   "version": "0.1.1",
-  "packageManager": "pnpm@9.1.2",
+  "packageManager": "pnpm@9.2.0",
   "description": "some additional modules for swiperjs",
   "author": "Vida Xie<https://github.com/9romise>",
   "license": "MIT",
@@ -35,7 +35,6 @@
     "dist"
   ],
   "scripts": {
-    "rollup": "rollup --config=rollup.config.ts --configPlugin=rollup-plugin-esbuild",
     "build": "tsx scripts/build.ts",
     "watch": "tsx scripts/build.ts --watch",
     "lint": "eslint .",
