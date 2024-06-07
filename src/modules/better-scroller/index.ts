@@ -1,5 +1,4 @@
-import { throttle } from 'lodash-es';
-import { getScrollParent, isBoolean, isFunction, isScrollable, loopChildren } from '../../shared/utils';
+import { getScrollParent, isBoolean, isFunction, isScrollable, loopChildren, throttle } from '../../shared/utils';
 import type { SwiperModule } from '../../types';
 
 export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
@@ -121,7 +120,7 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
       moveDirection = direction;
     if (direction !== moveDirection && moveDirection !== 'changed')
       moveDirection = 'changed';
-  }, 200);
+  });
 
   const onTouchEnd = (e: TouchEvent) => {
     if (swiper.destroyed || !swiper.params.enabled || !swiper.allowTouchMove || !startPoint || !moveDirection || moveDirection === 'changed')

@@ -47,3 +47,43 @@ export function getScrollParent(el?: Element) {
   }
   return document.scrollingElement || document.documentElement;
 }
+
+interface ThrottleOptions {
+  leading?: boolean;
+  trailing?: boolean;
+}
+export function throttle<T extends (...args: any[]) => void>(func: T, wait = 200, options: ThrottleOptions = {}): T {
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+  let lastArgs: any[] | null = null;
+  let lastCallTime: number | null = null;
+  const { leading = true, trailing = true } = options;
+
+  return ((...args: any[]) => {
+    const now = Date.now();
+
+    if (lastCallTime === null && !leading)
+      lastCallTime = now;
+
+    const remainingTime = wait - (now - (lastCallTime || 0));
+
+    if (remainingTime <= 0 || remainingTime > wait) {
+      if (timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+      lastCallTime = now;
+      func(...args);
+    }
+    else if (trailing && !timeout) {
+      lastArgs = args;
+      timeout = setTimeout(() => {
+        lastCallTime = leading ? Date.now() : null;
+        timeout = null;
+        if (lastArgs) {
+          func(...lastArgs);
+          lastArgs = null;
+        }
+      }, remainingTime);
+    }
+  }) as T;
+}
