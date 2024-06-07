@@ -21,9 +21,8 @@ export type SwiperModule = (options: {
   emit: Swiper['emit'];
 }) => void;
 
-export interface SwiperEvents
-  extends OriginalSwiperEvents,
-  BetterScrollerEvents,
+export interface SwiperEvents extends OriginalSwiperEvents,
+  BetterScrollerEvents
 {}
 
 export * from './better-scroller';
