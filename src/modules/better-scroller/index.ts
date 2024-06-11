@@ -1,19 +1,19 @@
-import { getScrollParent, isBoolean, isFunction, isScrollable, loopChildren, throttle } from '../../shared/utils';
-import type { SwiperModule } from '../../types';
+import { getScrollParent, isBoolean, isFunction, isScrollable, loopChildren, throttle } from '../../shared/utils'
+import type { SwiperModule } from '../../types'
 
 export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
   extendParams({
     betterScroller: {
       resetScroll: true,
     },
-  });
+  })
 
-  let noSwipingClass = '';
+  let noSwipingClass = ''
 
-  const scrollableElements: HTMLElement[] = [];
-  let moveFrom: 'start' | 'end' | null = null;
-  let startPoint: Record<'x' | 'y', number> | null = null;
-  let moveDirection: 'prev' | 'next' | 'changed' | null = null;
+  const scrollableElements: HTMLElement[] = []
+  let moveFrom: 'start' | 'end' | null = null
+  let startPoint: Record<'x' | 'y', number> | null = null
+  let moveDirection: 'prev' | 'next' | 'changed' | null = null
 
   const MEASURE_PRESET = {
     horizontal: {
@@ -32,185 +32,184 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
       scroll: 'scrollHeight',
       client: 'clientHeight',
     },
-  } as const;
-  let measure: (typeof MEASURE_PRESET)['horizontal' | 'vertical'];
+  } as const
+  let measure: (typeof MEASURE_PRESET)['horizontal' | 'vertical']
 
   on('slideChangeTransitionEnd', () => {
-    const { resetScroll } = swiper.params.betterScroller!;
+    const { resetScroll } = swiper.params.betterScroller!
 
     if (resetScroll === false)
-      return;
+      return
 
     scrollableElements.forEach((el) => {
-      let options: ScrollToOptions = { left: 0, top: 0 };
+      let options: ScrollToOptions = { left: 0, top: 0 }
 
       if (isFunction(resetScroll)) {
-        const res = resetScroll(el) ?? true;
+        const res = resetScroll(el) ?? true
 
         if (res === false)
-          return;
+          return
         else if (!isBoolean(res))
-          options = res;
-      }
-      else if (!isBoolean(resetScroll)) {
-        options = resetScroll!;
+          options = res
+      } else if (!isBoolean(resetScroll)) {
+        options = resetScroll!
       }
 
-      el.scrollTo(options);
-    });
-  });
+      el.scrollTo(options)
+    })
+  })
 
   const onWheel = (e: WheelEvent) => {
     if (swiper.destroyed || !swiper.params.enabled || !swiper.mousewheel.enabled)
-      return;
-    let wheelDelta = e[measure.wheelDelta];
+      return
+    let wheelDelta = e[measure.wheelDelta]
     // Press and hold the Shift with the mouse scroll wheel will scroll horizontally.
     if (e.shiftKey)
-      wheelDelta = e.deltaY;
+      wheelDelta = e.deltaY
 
     if (Math.abs(wheelDelta) < swiper.params.threshold!)
-      return;
+      return
 
-    const el = getScrollParent(e.target as HTMLElement);
+    const el = getScrollParent(e.target as HTMLElement)
 
     if (wheelDelta < 0 && el[measure.scrollStart] <= 0)
-      swiper.slidePrev();
+      swiper.slidePrev()
     else if (wheelDelta > 0 && el[measure.scrollStart] + 1 >= el[measure.scroll] - el[measure.client])
-      swiper.slideNext();
+      swiper.slideNext()
     else
-      e.stopPropagation();
-  };
+      e.stopPropagation()
+  }
 
   const onTouchStart = (e: TouchEvent) => {
     if (swiper.destroyed || !swiper.params.enabled || !swiper.allowTouchMove)
-      return;
+      return
 
-    const el = getScrollParent(e.target as HTMLElement);
+    const el = getScrollParent(e.target as HTMLElement)
 
     if (!el.classList.contains(noSwipingClass))
-      return;
+      return
 
     if (el[measure.scrollStart] <= 0)
-      moveFrom = 'start';
+      moveFrom = 'start'
     // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight#determine_if_an_element_has_been_totally_scrolled
     else if (el[measure.scrollStart] + 1 >= el[measure.scroll] - el[measure.client])
-      moveFrom = 'end';
+      moveFrom = 'end'
     else
-      moveFrom = null;
+      moveFrom = null
 
     startPoint = {
       x: e.touches[0].pageX,
       y: e.touches[0].pageY,
-    };
-    moveDirection = null;
-  };
+    }
+    moveDirection = null
+  }
 
   const onTouchMove = throttle((e: TouchEvent) => {
     if (swiper.destroyed || !swiper.params.enabled || !swiper.allowTouchMove || !startPoint)
-      return;
+      return
 
-    const el = getScrollParent(e.target as HTMLElement);
+    const el = getScrollParent(e.target as HTMLElement)
 
     if (!el.classList.contains(noSwipingClass))
-      return;
+      return
 
-    const direction = e.touches[0][measure.touchAxis] > startPoint[measure.startAxis] ? 'next' : 'prev';
+    const direction = e.touches[0][measure.touchAxis] > startPoint[measure.startAxis] ? 'next' : 'prev'
 
     if (!moveDirection)
-      moveDirection = direction;
+      moveDirection = direction
     if (direction !== moveDirection && moveDirection !== 'changed')
-      moveDirection = 'changed';
-  });
+      moveDirection = 'changed'
+  })
 
   const onTouchEnd = (e: TouchEvent) => {
     if (swiper.destroyed || !swiper.params.enabled || !swiper.allowTouchMove || !startPoint || !moveDirection || moveDirection === 'changed')
-      return;
+      return
 
-    const scrollBox = getScrollParent(e.target as HTMLElement);
+    const scrollBox = getScrollParent(e.target as HTMLElement)
 
     if (!scrollBox.classList.contains(noSwipingClass))
-      return;
+      return
 
-    const moveDistance = e.changedTouches[0][measure.touchAxis] - startPoint[measure.startAxis];
+    const moveDistance = e.changedTouches[0][measure.touchAxis] - startPoint[measure.startAxis]
 
     if (moveDistance > swiper.params.threshold! && moveFrom === 'start')
-      swiper.slidePrev();
+      swiper.slidePrev()
     else if (moveDistance < swiper.params.threshold! && moveFrom === 'end')
-      swiper.slideNext();
-  };
+      swiper.slideNext()
+  }
 
   const attachEvents = () => {
     scrollableElements.forEach((el) => {
       if (!el)
-        return;
+        return
 
       if (swiper.mousewheel)
-        el.addEventListener('wheel', onWheel);
+        el.addEventListener('wheel', onWheel)
 
-      el.addEventListener('touchstart', onTouchStart);
-      el.addEventListener('touchmove', onTouchMove);
-      el.addEventListener('touchend', onTouchEnd);
-    });
-  };
+      el.addEventListener('touchstart', onTouchStart)
+      el.addEventListener('touchmove', onTouchMove)
+      el.addEventListener('touchend', onTouchEnd)
+    })
+  }
 
   const detachEvents = () => {
     scrollableElements.forEach((el) => {
       if (!el)
-        return;
+        return
       if (swiper.mousewheel)
-        el.removeEventListener('wheel', onWheel);
-      el.removeEventListener('touchstart', onTouchStart);
-      el.removeEventListener('touchmove', onTouchMove);
-      el.removeEventListener('touchend', onTouchEnd);
-    });
-  };
+        el.removeEventListener('wheel', onWheel)
+      el.removeEventListener('touchstart', onTouchStart)
+      el.removeEventListener('touchmove', onTouchMove)
+      el.removeEventListener('touchend', onTouchEnd)
+    })
+  }
 
   const update = () => {
-    detachEvents();
+    detachEvents()
     loopElements((el) => {
-      el.classList.remove(noSwipingClass);
-    });
+      el.classList.remove(noSwipingClass)
+    })
 
-    noSwipingClass = swiper.params.noSwipingClass!;
-    measure = MEASURE_PRESET[swiper.params.direction!];
+    noSwipingClass = swiper.params.noSwipingClass!
+    measure = MEASURE_PRESET[swiper.params.direction!]
 
-    scrollableElements.length = 0;
+    scrollableElements.length = 0
     swiper.slides.forEach((slide) => {
       loopChildren(slide, (el) => {
         if (isScrollable(el) && !el.classList.contains(noSwipingClass))
-          scrollableElements.push(el as HTMLElement);
-      });
-    });
+          scrollableElements.push(el as HTMLElement)
+      })
+    })
 
     loopElements((el) => {
-      el.classList.add(noSwipingClass);
-    });
-    attachEvents();
-  };
+      el.classList.add(noSwipingClass)
+    })
+    attachEvents()
+  }
 
   on('init', (swiper) => {
-    swiper.el.classList.add(`${swiper.params.containerModifierClass}better-scroller`);
-    update();
-  });
+    swiper.el.classList.add(`${swiper.params.containerModifierClass}better-scroller`)
+    update()
+  })
 
   on('update', () => {
-    update();
-  });
+    update()
+  })
 
   on('destroy', (swiper) => {
-    swiper.el.classList.remove(`${swiper.params.containerModifierClass}better-scroller`);
-    detachEvents();
-  });
+    swiper.el.classList.remove(`${swiper.params.containerModifierClass}better-scroller`)
+    detachEvents()
+  })
 
   function loopElements(fn: (el: HTMLElement) => void) {
     scrollableElements.forEach((el) => {
       if (!el)
-        return;
-      fn(el);
-    });
+        return
+      fn(el)
+    })
   }
 
   swiper.betterScroller = {
     update,
-  };
-};
+  }
+}

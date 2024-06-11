@@ -2,7 +2,7 @@ export interface BetterScrollerMethods {
   /**
    * Update scrollable elements and their eventListeners.
    */
-  update: () => void;
+  update: () => void
 }
 
 export interface BetterScrollerEvents {}
@@ -28,5 +28,5 @@ export interface BetterScrollerOptions {
    *
    * @default true
    */
-  resetScroll?: boolean | ScrollToOptions | ((scrollableElement: Element) => boolean | ScrollToOptions);
+  resetScroll?: boolean | ScrollToOptions | ((scrollableElement: Element) => boolean | ScrollToOptions)
 }

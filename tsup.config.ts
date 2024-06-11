@@ -1,6 +1,6 @@
-import { defineConfig } from 'tsup';
+import { defineConfig } from 'tsup'
 
-const name = 'SwiperExtraModules';
+const name = 'SwiperExtraModules'
 /// keep-sorted
 export default defineConfig({
   clean: true,
@@ -10,4 +10,4 @@ export default defineConfig({
   globalName: name,
   name,
   platform: 'browser',
-});
+})

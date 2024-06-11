@@ -1,1 +1,1 @@
-export * from './modules/better-scroller';
+export * from './modules/better-scroller'
