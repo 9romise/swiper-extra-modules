@@ -166,6 +166,7 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
   };
 
   const update = () => {
+    detachEvents();
     loopElements((el) => {
       el.classList.remove(noSwipingClass);
     });
@@ -184,18 +185,16 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
     loopElements((el) => {
       el.classList.add(noSwipingClass);
     });
+    attachEvents();
   };
 
   on('init', (swiper) => {
     swiper.el.classList.add(`${swiper.params.containerModifierClass}better-scroller`);
     update();
-    attachEvents();
   });
 
   on('update', () => {
-    detachEvents();
     update();
-    attachEvents();
   });
 
   on('destroy', (swiper) => {
