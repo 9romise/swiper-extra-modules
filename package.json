@@ -48,7 +48,7 @@
     "swiper": "^11.1.4"
   },
   "devDependencies": {
-    "@types/node": "^20.14.2",
+    "@types/node": "^22.0.0",
     "@vida0905/eslint-config": "^0.2.0",
     "bumpp": "^9.4.1",
     "changelogithub": "^0.13.7",
