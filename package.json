@@ -48,16 +48,16 @@
     "swiper": "^11.1.4"
   },
   "devDependencies": {
-    "@types/node": "^20.14.2",
-    "@vida0905/eslint-config": "^0.2.0",
-    "bumpp": "^9.4.1",
-    "changelogithub": "^0.13.7",
-    "eslint": "^9.4.0",
+    "@types/node": "^22.2.0",
+    "@vida0905/eslint-config": "^0.5.0",
+    "bumpp": "^9.4.2",
+    "changelogithub": "^0.13.9",
+    "eslint": "^9.9.0",
     "pre-commit": "^1.2.2",
-    "tsup": "^8.1.0",
-    "tsx": "^4.15.2",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.13"
+    "tsup": "^8.2.4",
+    "tsx": "^4.17.0",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0"
   },
   "pre-commit": [
     "lint"
