@@ -1,3 +1,3 @@
-import { vida } from '@vida0905/eslint-config'
+import { defineConfig } from '@vida0905/eslint-config'
 
-export default vida()
+export default defineConfig()
