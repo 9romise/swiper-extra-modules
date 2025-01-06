@@ -45,7 +45,7 @@
     "playground": "cd playground && vite"
   },
   "peerDependencies": {
-    "swiper": "^11.1.4"
+    "swiper": ">=11.1.4"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
