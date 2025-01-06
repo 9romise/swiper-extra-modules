@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      es-toolkit:
-        specifier: ^1.31.0
-        version: 1.31.0
       swiper:
         specifier: '>=11.1.4'
         version: 11.2.0
@@ -24,6 +21,9 @@ importers:
       bumpp:
         specifier: ^9.9.2
         version: 9.9.2
+      es-toolkit:
+        specifier: ^1.31.0
+        version: 1.31.0
       eslint:
         specifier: ^9.17.0
         version: 9.17.0(jiti@2.4.2)
