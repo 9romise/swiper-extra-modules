@@ -37,17 +37,6 @@ export function isScrollable(el: Element) {
   })
 }
 
-export function getScrollParent(el?: Element) {
-  let crtParent = el?.parentElement
-  while (crtParent) {
-    if (isScrollable(crtParent))
-      return crtParent
-
-    crtParent = crtParent.parentElement
-  }
-  return document.scrollingElement || document.documentElement
-}
-
 interface ThrottleOptions {
   leading?: boolean
   trailing?: boolean

@@ -1,4 +1,4 @@
-import { getScrollParent, isBoolean, isFunction, isScrollable, loopChildren, throttle } from '../../shared/utils'
+import {  isBoolean, isFunction, isScrollable, loopChildren, throttle } from '../../shared/utils'
 import type { SwiperModule } from '../../types'
 
 export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
@@ -59,6 +59,19 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
     })
   })
 
+  function getScrollTarget(el: HTMLElement) {
+    if (scrollableElements.includes(el))
+      return el
+    let crtParent = el?.parentElement
+    while (crtParent) {
+      if (isScrollable(crtParent))
+        return crtParent
+
+      crtParent = crtParent.parentElement
+    }
+    return document.scrollingElement || document.documentElement
+  }
+
   const onWheel = (e: WheelEvent) => {
     if (swiper.destroyed || !swiper.params.enabled || !swiper.mousewheel.enabled)
       return
@@ -70,7 +83,7 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
     if (Math.abs(wheelDelta) < swiper.params.threshold!)
       return
 
-    const el = getScrollParent(e.target as HTMLElement)
+    const el = getScrollTarget(e.target as HTMLElement)
 
     if (wheelDelta < 0 && el[measure.scrollStart] <= 0)
       swiper.slidePrev()
@@ -84,7 +97,7 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
     if (swiper.destroyed || !swiper.params.enabled || !swiper.allowTouchMove)
       return
 
-    const el = getScrollParent(e.target as HTMLElement)
+    const el = getScrollTarget(e.target as HTMLElement)
 
     if (!el.classList.contains(noSwipingClass))
       return
@@ -108,7 +121,7 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
     if (swiper.destroyed || !swiper.params.enabled || !swiper.allowTouchMove || !startPoint)
       return
 
-    const el = getScrollParent(e.target as HTMLElement)
+    const el = getScrollTarget(e.target as HTMLElement)
 
     if (!el.classList.contains(noSwipingClass))
       return
@@ -125,7 +138,7 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
     if (swiper.destroyed || !swiper.params.enabled || !swiper.allowTouchMove || !startPoint || !moveDirection || moveDirection === 'changed')
       return
 
-    const scrollBox = getScrollParent(e.target as HTMLElement)
+    const scrollBox = getScrollTarget(e.target as HTMLElement)
 
     if (!scrollBox.classList.contains(noSwipingClass))
       return
