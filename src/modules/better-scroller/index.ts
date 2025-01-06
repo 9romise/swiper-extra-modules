@@ -1,5 +1,6 @@
-import {  isBoolean, isFunction, isScrollable, loopChildren, throttle } from '../../shared/utils'
 import type { SwiperModule } from '../../types'
+import { isBoolean, isFunction, throttle } from 'es-toolkit'
+import { isScrollable, loopChildren } from '../../shared/utils'
 
 export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
   extendParams({
@@ -52,7 +53,7 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
         else if (!isBoolean(res))
           options = res
       } else if (!isBoolean(resetScroll)) {
-        options = resetScroll!
+        options = resetScroll as ScrollToOptions
       }
 
       el.scrollTo(options)
@@ -132,7 +133,7 @@ export const BetterScroller: SwiperModule = ({ swiper, extendParams, on }) => {
       moveDirection = direction
     if (direction !== moveDirection && moveDirection !== 'changed')
       moveDirection = 'changed'
-  })
+  }, 200, { edges: ['leading', 'trailing'] })
 
   const onTouchEnd = (e: TouchEvent) => {
     if (swiper.destroyed || !swiper.params.enabled || !swiper.allowTouchMove || !startPoint || !moveDirection || moveDirection === 'changed')
