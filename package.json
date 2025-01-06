@@ -47,6 +47,9 @@
   "peerDependencies": {
     "swiper": ">=11.1.4"
   },
+  "dependencies": {
+    "es-toolkit": "^1.31.0"
+  },
   "devDependencies": {
     "@types/node": "^22.10.5",
     "@vida0905/eslint-config": "^1.2.0",
@@ -60,8 +63,5 @@
   },
   "pre-commit": [
     "lint"
-  ],
-  "dependencies": {
-    "es-toolkit": "^1.31.0"
-  }
+  ]
 }
