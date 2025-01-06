@@ -2,7 +2,7 @@
   "name": "swiper-extra-modules",
   "type": "module",
   "version": "0.2.3",
-  "packageManager": "pnpm@9.3.0",
+  "packageManager": "pnpm@9.15.3",
   "description": "some additional modules for swiperjs",
   "author": "Vida Xie<https://github.com/9romise>",
   "license": "MIT",
@@ -48,16 +48,16 @@
     "swiper": "^11.1.4"
   },
   "devDependencies": {
-    "@types/node": "^22.7.5",
-    "@vida0905/eslint-config": "^1.1.0",
-    "bumpp": "^9.7.1",
+    "@types/node": "^22.10.5",
+    "@vida0905/eslint-config": "^1.2.0",
+    "bumpp": "^9.9.2",
     "changelogithub": "^0.13.11",
-    "eslint": "^9.12.0",
+    "eslint": "^9.17.0",
     "pre-commit": "^1.2.2",
-    "tsup": "^8.3.0",
-    "tsx": "^4.19.1",
-    "typescript": "^5.6.3",
-    "vite": "^5.4.8"
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11"
   },
   "pre-commit": [
     "lint"
